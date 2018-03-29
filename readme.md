@@ -69,15 +69,29 @@ If they sign up *with* Github, they cannot update their username, password, e-ma
 
 If they sign up *without* Github, they can update their username, password, e-mail, etc. Should they wish to later link Github to their account, they can click the "Link Github account" link, which will poll the database, rewrite their information in the Users table to use their Github username, email, etc. From there their account will behave as if they had originally signed up with Github.
 
-# Deployment
+# Deployment on Heroku
 
-When commits are pushed or merged via pull request to master on this repo, [Travis](https://travis-ci.org/ga-dc/garnet)
-clones the application, runs `bundle exec rake` to run tests specified in `spec/`.
+When a pull request is made against `master` or commits are pushed to an existing pull request to `master` on this repo, [Semaphore](https://semaphoreci.com/) will run the tests specified in `spec/`.
 
-If all tests pass, travis pushes to the production repo: `git@garnet.wdidc.org:garnet.git`
+If all tests pass, the application will be deployed to the staging application on Heroku.
 
-This triggers a `post-update` hook, which pulls from GitHub's master branch and restarts
-unicorn, the application server.
+Pull requests should have a successful Semaphore build and an approved review on GitHub.
+
+After testing the staging application, you can promote the application from staging to production.
+
+## Managing the Deployment
+
+You'll need to reach out to someone from engineering to gain Heroku dashboard access Taylor Kems, Nick Wilson, or someone from the GA Engineering team (Slack channel `#engineering`).
+
+# Production Pipeline
+
+The production pipeline is owned by the GA tech account, managed in part by the engineering team. GArnet contributors can be made into Pipeline collaborators if necessary. Please contact the engineering team.
+
+> [Heroku Docs](https://devcenter.heroku.com/articles/pipelines#deployment-with-pipelines)
+
+## Warning about the Asset Pipeline and `ENV`
+
+If you interpolate `ENV` values, asset compilation will result in these values being hardcoded in `.css` and `.js` files, since the object references will be evaluated at when assets compile. Beware of this!
 
 # Troubleshooting
 
@@ -100,15 +114,6 @@ New Relic monitors the app and provides metrics.  They are available in developm
 ## RSpec
 
 Use it!
-
-# Debugging
-
-`ssh debug@garnet.wdidc.org` to log in as a read-only user (for approved devs only)
-
-Important Places:
-
-- `/var/www/garnet.wdidc.org/logs`
-- `/var/www/`
 
 ## CLI
 
@@ -173,4 +178,4 @@ bmartinowich (Brian Martinowich)
 jenkins-ga (RIP)
 ```
 
-> This contributor list was brought to you by [octoHatRack](https://github.com/LABHR/octohatrack)
+ This contributor list was brought to you by [octoHatRack](https://github.com/LABHR/octohatrack) feat. various humans.
