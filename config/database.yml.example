@@ -1,0 +1,21 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: unicode
+  reconnect: false
+  pool: 5
+  min_messages: warning
+  host: localhost
+  port: 5432
+  username: rails
+  password:
+
+development:
+  database: garnet_development
+  <<: *defaults
+
+test: &test
+  database: garnet_test
+  <<: *defaults
+
+production:
+  url: <%= ENV["DATABASE_URL"] %>
