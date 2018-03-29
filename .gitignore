@@ -23,3 +23,14 @@
 
 # generated metrics
 /public/metrics
+
+# Ignore bundler config.
+/.bundle
+# Heroku bundler
+vendor/bundle
+
+# DB Config
+config/database.yml
+
+# DB Backups
+*.psql
