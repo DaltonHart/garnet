@@ -141,31 +141,36 @@ $ garnet logs
 
 ## Thanks, ever so much, to *all* our contributers
 
-Code contributors: 13
+Code Contributors: 16
 ```
 adambray (Adam Bray)
 amaseda (Adrian Maseda)
+aspittel (Ali Spittel)
 andrewsunglaekim (Andrew Kim)
 beckybeauchamp1 (Becky Beauchamp)
 ebirving (Erica Irving)
-jmas13 (John Master)
-joe-gz (Joe Glatman Zaretsky)
-JonRojas (Jon Rojas)
 jshawl (Jesse Shawl)
+joe-gz (Joe Glatman Zaretsky)
+jmas13 (John Master)
+JonRojas (Jon Rojas)
 mattscilipoti (Matt Scilipoti)
 nolds9 (Nicholas Olds)
 RobertAKARobin (Robert Thomas)
+tailtore (Taylor Kems)
 tylercrosse (Tyler Crosse)
+esfourteen (Nick Wilson)
 ```
+
 Non-coding contributors: 8
 ```
-bmartinowich (Brian Martinowich)
 dan-ator (Daniel Alexander)
-jenkins-ga
-jocelynhoule
-sarahbrookscoach
-ShanazFC
-tessb (Tess )
+tessb (Tess B)
+sarahbrookscoach (Sarah Brooks)
+ShanazFC (Shanaz Chowdhery)
 timfoley (Tim Foley)
+jocelynhoule (Jocelyn Houle)
+bmartinowich (Brian Martinowich)
+jenkins-ga (RIP)
 ```
+
 > This contributor list was brought to you by [octoHatRack](https://github.com/LABHR/octohatrack)
