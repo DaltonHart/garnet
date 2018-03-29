@@ -1,3 +1,5 @@
+ruby '2.2.3'
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -26,7 +28,6 @@ gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
 gem 'select2-rails'
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'simple_form'
-gem 'whenever', :require => false
 
 group :production do
   # WORKAROUND: had difficulties debugging with unicorn, reverted to Webrick for dev

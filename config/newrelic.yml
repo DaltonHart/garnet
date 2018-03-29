@@ -14,8 +14,7 @@
 
 common: &default_settings
   # Required license key associated with your New Relic account.
-  # TODO: Matt's account.  Convert to "GA" account
-  license_key: d8ead2cc15b31e3649f3d8071ba9273b87a971a7
+  license_key: ENV['NEW_RELIC_LICENSE_KEY']
 
   # Your application name. Renaming here affects where data displays in New
   # Relic.  For more details, see https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/renaming-applications
