@@ -83,6 +83,9 @@ After testing the staging application, you can promote the application from stag
 
 You'll need to reach out to someone from engineering to gain Heroku dashboard access Taylor Kems, Nick Wilson, or someone from the GA Engineering team (Slack channel `#engineering`).
 
+Management of the Heroku applications (staging and production) can be done from the Heroku Dashboard.
+![Heroku Dashboard](./documentation-images/heroku-dashboard.png)
+
 # Production Pipeline
 
 The production pipeline is owned by the GA tech account, managed in part by the engineering team. GArnet contributors can be made into Pipeline collaborators if necessary. Please contact the engineering team.
