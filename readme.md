@@ -26,13 +26,20 @@ Garnet is a collaboration by the instructors of GA's WDI to produce a student da
   - `$ brew install phantomjs`
   - If you get an error about installing on Yosemite (or later), we need phantom 2.x.  Download the latest 2.x from https://github.com/Vitallium/phantomjs/releases and copy `phantomjs` to `/usr/local/bin`.
 - `$ bundle install`
+- Create a database.yml file in /config. You can follow the .example file for a template. If you're using postgres you shouldn't need a username and password as long as your roles and permissions are correct.
+  - Make sure you include a development and test environment, following the conventions in .example
+  - The test db is required if you want any rspec tests to work.
+
 - `$ rake db:create`
 - `$ rake db:schema:load`
   - Note: migrations are **not** designed to be run from a new DB
 - `$ rake db:seed`
   - Note: this generates a decent amount of data and can take up to 1 minute
 - `$ bundle exec figaro install`
-- [Register a Github application](https://github.com/settings/applications) and update `config/application.yml` to look like this:
+- [Register a Github application](https://github.com/settings/applications)
+  - Example of some values:
+  ![oauth](./docs/github-oauth.png)
+- Update `config/application.yml` to look like this:
 
     ```
     gh_client_id: "12345"
