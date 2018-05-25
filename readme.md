@@ -6,17 +6,17 @@ Garnet is a collaboration by the instructors of GA's WDI to produce a student da
 
 ### Please fork, clone, and contribute!
 
-### Current features:
+### Current Features
 
-- Extensibility across courses and cohorts
-- Mobile-friendly attendance-taking
-- Integration with Github
-  - Keep track of students' and instructors' Github information
-  - Track issues, pull requests, and forks
-- A "Report Card" functionality that shows students their current attendance and assignment turn-in rates
-- Leave detailed notes on homework submissions in Markdown format
-- Leave detailed observations on students in Markdown format
-- Admin and nonadmin roles
+  - Extensibility across courses and cohorts
+  - Mobile-friendly attendance-taking
+  - Integration with Github
+    - Keep track of students' and instructors' Github information
+    - Track issues, pull requests, and forks
+  - A "Report Card" functionality that shows students their current attendance and assignment turn-in rates
+  - Leave detailed notes on homework submissions in Markdown format
+  - Leave detailed observations on students in Markdown format
+  - Admin and Non-Admin roles
 
 ## Local Setup
 
@@ -76,22 +76,39 @@ If they sign up *with* Github, they cannot update their username, password, e-ma
 
 If they sign up *without* Github, they can update their username, password, e-mail, etc. Should they wish to later link Github to their account, they can click the "Link Github account" link, which will poll the database, rewrite their information in the Users table to use their Github username, email, etc. From there their account will behave as if they had originally signed up with Github.
 
-# Deployment
+# Deployment on Heroku
 
-When commits are pushed or merged via pull request to master on this repo, [Travis](https://travis-ci.org/ga-dc/garnet)
-clones the application, runs `bundle exec rake` to run tests specified in `spec/`.
+When a pull request is made against `master` or commits are pushed to an existing pull request to `master` on this repo, [Semaphore](https://semaphoreci.com/) will run the tests specified in `spec/`.
 
-If all tests pass, travis pushes to the production repo: `git@garnet.wdidc.org:garnet.git`
+If all tests pass, the application will be deployed to the staging application on Heroku.
 
-This triggers a `post-update` hook, which pulls from GitHub's master branch and restarts
-unicorn, the application server.
+Pull requests should have a successful Semaphore build and an approved review on GitHub prior to being merged.
 
-# Troubleshooting
+After testing the staging application, you can promote the application from staging to production.
+
+## Managing the Deployment
+
+You'll need to reach out to someone from engineering to gain Heroku dashboard access Taylor Kems, Nick Wilson, or someone from the GA Engineering team (Slack channel `#engineering`).
+
+Management of the Heroku applications (staging and production) can be done from the Heroku Dashboard.
+![Heroku Dashboard](./documentation-images/heroku-dashboard.png)
+
+# Production Pipeline
+
+The production pipeline is owned by the GA tech account, managed in part by the engineering team. GArnet contributors can be made into Pipeline collaborators if necessary. Please contact the engineering team.
+
+> [Heroku Docs](https://devcenter.heroku.com/articles/pipelines#deployment-with-pipelines)
+
+## Warning about the Asset Pipeline and `ENV`
+
+If you interpolate `ENV` values, asset compilation will result in these values being hardcoded in `.css` and `.js` files, since the object references will be evaluated at and then 'hardcoded' when assets compile. Beware of this!
 
 ## Metrics
 
-- `rake -T metrics`
-- cron job updates nightly, see config/schedule.rb
+> `heroku run rake -T metrics`
+
+## Scheduled Tasks
+- The heroku scheduler addon will run the following two `rake` tasks: `attendance:mark_absent` at 12:00PM (EST) and `bundle exec rake metrics:generate` at 1:00AM (EST)
 
 ### Sandi Metz rules
 
@@ -107,15 +124,6 @@ New Relic monitors the app and provides metrics.  They are available in developm
 ## RSpec
 
 Use it!
-
-# Debugging
-
-`ssh debug@garnet.wdidc.org` to log in as a read-only user (for approved devs only)
-
-Important Places:
-
-- `/var/www/garnet.wdidc.org/logs`
-- `/var/www/`
 
 ## CLI
 
@@ -148,31 +156,36 @@ $ garnet logs
 
 ## Thanks, ever so much, to *all* our contributers
 
-Code contributors: 13
+Code Contributors: 16
 ```
 adambray (Adam Bray)
 amaseda (Adrian Maseda)
+aspittel (Ali Spittel)
 andrewsunglaekim (Andrew Kim)
 beckybeauchamp1 (Becky Beauchamp)
 ebirving (Erica Irving)
-jmas13 (John Master)
-joe-gz (Joe Glatman Zaretsky)
-JonRojas (Jon Rojas)
 jshawl (Jesse Shawl)
+joe-gz (Joe Glatman Zaretsky)
+jmas13 (John Master)
+JonRojas (Jon Rojas)
 mattscilipoti (Matt Scilipoti)
 nolds9 (Nicholas Olds)
 RobertAKARobin (Robert Thomas)
+tailtore (Taylor Kems)
 tylercrosse (Tyler Crosse)
+esfourteen (Nick Wilson)
 ```
+
 Non-coding contributors: 8
 ```
-bmartinowich (Brian Martinowich)
 dan-ator (Daniel Alexander)
-jenkins-ga
-jocelynhoule
-sarahbrookscoach
-ShanazFC
-tessb (Tess )
+tessb (Tess B)
+sarahbrookscoach (Sarah Brooks)
+ShanazFC (Shanaz Chowdhery)
 timfoley (Tim Foley)
+jocelynhoule (Jocelyn Houle)
+bmartinowich (Brian Martinowich)
+jenkins-ga (RIP)
 ```
-> This contributor list was brought to you by [octoHatRack](https://github.com/LABHR/octohatrack)
+
+ This contributor list was brought to you by [octoHatRack](https://github.com/LABHR/octohatrack) feat. various humans.
